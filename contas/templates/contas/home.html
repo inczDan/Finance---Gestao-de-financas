@@ -15,7 +15,7 @@
         <ul>
         {% for t in transacoes %}
             
-            <li>{{ t.descricao }} - <b>R$</b>{{ t.valor }} - {{ t.categoria }}</li>
+            <li><a href="{% url 'urlupdate' t.id %}">{{ t.descricao }} - <b>R$</b>{{ t.valor }} - {{ t.categoria }}</a></li>
             <p>---------------------------------------------------------</p>
             
         {% endfor %}

@@ -7,15 +7,34 @@ from .forms import TransacaoForms
 
 
 def home(request):
-    desp_fix = {}
-    desp_fix ['transacoes'] = Transacao.objects.all() 
-    return render(request, 'contas/home.html', desp_fix)
-
+    data = {}
+    data ['transacoes'] = Transacao.objects.all() 
+    return render(request, 'contas/home.html', data)
+#criacao de uma transação -create-
 def nova_transacao(request):
     data = {}
     form = TransacaoForms(request.POST or None)
     if form.is_valid():
         form.save()
-        return redirect(home)
+        return redirect('/')
     data['form'] = form
     return render(request, 'contas/novo_form.html', data)
+
+
+
+#nesta secao estamos construindo um codigo para fazer update em um item ja existente
+def update(request, id):
+    data = {}
+    transacao = Transacao.objects.get(id=id) #aqui pegamos um item ja existente através de seu id
+    form = TransacaoForms(request.POST or None, instance=transacao)#caso ele exista e possua informação, estará valido
+    if form.is_valid():
+        form.save()
+        return redirect('/')
+    data['form'] = form
+    data['transacao'] = transacao
+    return render(request, 'contas/novo_form.html', data)
+
+def delete(request, id):
+    transacao = Transacao.objects.get(id=id) #estamos recuperando o objeto do banco novamente
+    transacao.delete()
+    return redirect('/')
