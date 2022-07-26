@@ -11,6 +11,8 @@ def home(request):
     # despfix = {}
     data['cat1'] = Transacao.objects.filter(categoria = 1)
     data['cat2'] = Transacao.objects.filter(categoria = 2)
+    data['cat3'] = Transacao.objects.filter(categoria = 3)
+    data['cat4'] = Transacao.objects.filter(categoria = 4)
     # despfix ['despfixas'] = Transacao.objects.filter(categoria = 1)
     return render(request, 'contas/home.html', data)
 #criacao de uma transação -create-

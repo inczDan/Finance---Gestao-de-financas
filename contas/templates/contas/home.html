@@ -8,25 +8,53 @@
     <title>Controle de gastos</title>
 </head>
 <body>
-    <h1>Finance</h1>
-    <h2> Seu registro, nossas contas!</h2>
-    <div>
-        
-        <ul>
-        {% for t in cat1 %}
-            
-            <li><a href="{% url 'urlupdate' t.id %}">{{ t.descricao }} - <b>R$</b>{{ t.valor }} - {{ t.categoria }}</a></li>
-            <p>---------------------------------------------------------</p>
-            
-        {% endfor %}
-        {% for t in cat2 %}
-            
-            <li><a href="{% url 'urlupdate' t.id %}">{{ t.descricao }} - <b>R$</b>{{ t.valor }} - {{ t.categoria }}</a></li>
-            <p>---------------------------------------------------------</p>
-            
-        {% endfor %}
-        </ul>
+    <nav class="nav-bar">
+        <h1>Finance</h1>
+        <h2> Seu registro, nossas contas!</h2>
+    </nav>
+    <div class="container">
+        <div class="categoria1">
+            <ul>
+            {% for t in cat1 %}
+                
+                <li><a href="{% url 'urlupdate' t.id %}">{{ t.descricao }} - <b>R$</b>{{ t.valor }} - {{ t.categoria }}</a></li>
+                <p>---------------------------------------------------------</p>
+                
+            {% endfor %}
+            </ul>
+        </div>
+        <div class="categoria2">
+            <ul>
+            {% for t in cat2 %}
+                
+                <li><a href="{% url 'urlupdate' t.id %}">{{ t.descricao }} - <b>R$</b>{{ t.valor }} - {{ t.categoria }}</a></li>
+                <p>---------------------------------------------------------</p>
+                
+            {% endfor %}
+            </ul>
+        </div>
+        <div>
+            <ul>
+                {% for t in cat3 %}
+                    <li>
+                        <a href="{% url 'urlupdate' t.id %}">{{ t.descricao }} - <b>R$</b>{{ t.valor }} - {{ t.categoria }}  </a>
+                        <p>---------------------------------------------------------</p>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div>
+            <ul>
+                {% for t in cat4 %}
+                <li>
+                    <a href="{% url 'urlupdate' t.id %}">{{ t.descricao }} - <b>R$</b>{{ t.valor }} - {{ t.categoria }}  </a>
+                    <p>---------------------------------------------------------</p>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div> 
         <button><a href="{% url 'nova' %}">Nova transação</a></button>
-    </div>
+    
 </body>
 </html>
