@@ -13,7 +13,13 @@
     <div>
         
         <ul>
-        {% for t in transacoes %}
+        {% for t in cat1 %}
+            
+            <li><a href="{% url 'urlupdate' t.id %}">{{ t.descricao }} - <b>R$</b>{{ t.valor }} - {{ t.categoria }}</a></li>
+            <p>---------------------------------------------------------</p>
+            
+        {% endfor %}
+        {% for t in cat2 %}
             
             <li><a href="{% url 'urlupdate' t.id %}">{{ t.descricao }} - <b>R$</b>{{ t.valor }} - {{ t.categoria }}</a></li>
             <p>---------------------------------------------------------</p>

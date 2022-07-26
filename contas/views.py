@@ -8,7 +8,10 @@ from .forms import TransacaoForms
 
 def home(request):
     data = {}
-    data ['transacoes'] = Transacao.objects.all() 
+    # despfix = {}
+    data['cat1'] = Transacao.objects.filter(categoria = 1)
+    data['cat2'] = Transacao.objects.filter(categoria = 2)
+    # despfix ['despfixas'] = Transacao.objects.filter(categoria = 1)
     return render(request, 'contas/home.html', data)
 #criacao de uma transação -create-
 def nova_transacao(request):
@@ -18,7 +21,7 @@ def nova_transacao(request):
         form.save()
         return redirect('/')
     data['form'] = form
-    return render(request, 'contas/novo_form.html', data)
+    return render(request, 'contas/novo_form.html', data )
 
 
 
